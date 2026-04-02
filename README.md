@@ -1,5 +1,4 @@
 # 🎓 Student Management System (C++)
-
 ## 🚀 Overview
 A modular C++ application for managing student data with features like sorting, ranking, fuzzy search, and CSV export.
 
@@ -33,10 +32,13 @@ A modular C++ application for managing student data with features like sorting, 
 g++ src/*.cpp -Iinclude -o app
 ./app
 
+```
 ## 📂 Project Structure
+
 src/ → Source files  
 include/ → Header files  
 data/ → Stored JSON data  
 
 ## 👨‍💻 Author
-Mahad
+
+Mahad Bawani
