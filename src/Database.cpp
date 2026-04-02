@@ -84,7 +84,6 @@ void addStudent() {
         if (isNumber(idStr)) {
             id = stoi(idStr);
 
-            // check duplicate
             bool exists = false;
             for (auto &s : students) {
                 if (s.id == id) {
@@ -143,15 +142,17 @@ void addStudent() {
             else cout << "Marks must be 0 - 100\n";
 
         } else {
-
             cout << "Invalid Marks!\n";
         }
     }
+
 
     Student s(id, name, age, marks);
     students.push_back(s);
 
     cout << "Student added successfully!\n";
+
+    saveToFile();  // ✅ persist to JSON
 }
 
 void showStatistics() {
@@ -319,14 +320,18 @@ void deleteStudent() {
         if (students[i].id == id) {
             students.erase(students.begin() + i);
             cout << "Student deleted successfully.\n";
+            saveToFile();
             found = true;
             break;
+            
         }
     }
 
     if (!found) {
         cout << "Student not found.\n";
     }
+
+
 }
 
 /*
@@ -346,8 +351,8 @@ void saveToFile() {
         });
     }
 
-    ofstream file("students.json");
-    file << j.dump(4); // pretty print
+    ofstream file("data/students.json");
+    file << j.dump(4); 
     file.close();
 }
 
@@ -359,7 +364,7 @@ void saveToFile() {
 ===============================
 */
 void loadFromFile() {
-    ifstream file("students.json");
+    ifstream file("data/students.json");
 
     if (!file) {
         cout << "No file found.\n";
@@ -485,11 +490,17 @@ void modifyStudent() {
             }
 
             cout << "Student updated successfully!\n";
+            
+
+            saveToFile();  
             return;
+
+
         }
     }
 
     cout << "Student not found.\n";
+
 }
 
 void searchByName() {

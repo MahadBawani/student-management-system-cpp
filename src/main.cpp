@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "Database.h"
 
 using namespace std;
@@ -22,9 +23,19 @@ int main() {
         cout << "10. Show Top Students\n";
         cout << "11. Export to Excel (CSV)\n";
         cout << "12. Save & Exit\n";
-        cout << "Enter choice: ";
 
-        cin >> choice;
+while (true) {
+    cout << "\nEnter choice: ";
+
+    if (cin >> choice) {
+        break; // valid input
+    } else {
+        cout << "Invalid input! Please enter a number.\n";
+
+        cin.clear(); // clear error flag
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard bad input
+    }
+}
 
         switch (choice) {
             case 1: addStudent(); break;
