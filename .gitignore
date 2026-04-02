@@ -1,0 +1,5 @@
+app
+*.exe
+*.o
+*.obj
+*.log
